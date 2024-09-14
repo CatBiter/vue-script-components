@@ -1,0 +1,28 @@
+$background-color: #141518;
+
+// 主题样式
+$base-memu-color: #7e95b0;
+$base-memu-color-active: #ffffff;
+$base-menu-background: #1d1f25;
+
+
+// 基础样式
+$--color-primary: #409EFF;
+$--color-success: #67C23A;
+$--color-warning: #E6A23C;
+$--color-danger: #F56C6C;
+$--color-info: #909399;
+
+:export {
+    backgroundColor: $background-color;
+
+    sideBarColor: $base-memu-color;
+    sideBarColorActive: $base-memu-color-active;
+    sideBarBackground: $base-menu-background;
+
+    primaryColor: $--color-primary;
+    successColor: $--color-success;
+    dangerColor: $--color-danger;
+    infoColor: $--color-info;
+    warningColor: $--color-warning;
+}
