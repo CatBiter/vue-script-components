@@ -1,4 +1,7 @@
 <template>
+    <!-- 提供绝对定位的根节点 -->
+    <div id="RootElementTarget" style="position: relative;"></div>
+    <!-- 页面内容 -->
     <div class="bg" :style="{ backgroundColor: variables.backgroundColor}">
         <router-view/>
     </div>

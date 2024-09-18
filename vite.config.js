@@ -18,11 +18,13 @@ export default defineConfig({
   plugins: [
     vue(),
     createSvgIconsPlugin({
+      // 指定需要缓存的图标文件夹
       iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
-      symbolId: 'icon-[name]',
+      // 指定symbolId格式
+      symbolId: 'icon-[dir]-[name]',
     }),
     AutoImport({
-      imports: ['vue', 'vue-router'],
+      imports: ['vue', 'vue-router', 'pinia'],
       resolvers: [ElementPlusResolver()],
     }),
     Components({

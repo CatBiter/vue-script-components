@@ -1,11 +1,11 @@
 <template>
-    111
+      
 </template>
 
-<script setup>
+<script setup name="WorkPlace">
 
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 
 </style>

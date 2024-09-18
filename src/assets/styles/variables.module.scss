@@ -1,9 +1,15 @@
-$background-color: #141518;
+// $background-color: #141518;
+$background-color: #f3f5f7;
 
 // 主题样式
-$base-memu-color: #7e95b0;
-$base-memu-color-active: #ffffff;
-$base-menu-background: #1d1f25;
+// $base-memu-color: #7e95b0;
+// $base-memu-color-active: #ffffff;
+// $base-menu-background: #1d1f25;
+// $base-menu-splitLine: #282c38;
+$base-memu-color: #898d99;
+$base-memu-color-active: #7433db;
+$base-menu-background: #ffffff;
+$base-menu-splitLine: #f1f2f7;
 
 
 // 基础样式
@@ -19,6 +25,7 @@ $--color-info: #909399;
     sideBarColor: $base-memu-color;
     sideBarColorActive: $base-memu-color-active;
     sideBarBackground: $base-menu-background;
+    sideBarSplitLine: $base-menu-splitLine;
 
     primaryColor: $--color-primary;
     successColor: $--color-success;
