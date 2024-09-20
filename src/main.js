@@ -11,7 +11,7 @@ import router from './router'
 // svg全局注册
 import SvgIcon from '@/components/SvgIcon'
 import 'virtual:svg-icons-register'
-import elementIcons from '@/components/SvgIcon/svgicon'
+import elementIcons from '@/utils/svgicon'
 
 const app = createApp(App)
 

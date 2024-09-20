@@ -1,6 +1,6 @@
 <template>
     <template v-if="hasOneChild(item.children, item)">
-        <el-menu-item :index="resolvePath(onlyOneChild.path, onlyOneChild.query)">
+        <el-menu-item :index="props.basePath + '/' + onlyOneChild.path">
             <template #title>{{ onlyOneChild.meta.title }}</template>
         </el-menu-item>
     </template>
@@ -14,7 +14,7 @@
             v-for="(child, index) in item.children"
             :key="child.path + index"
             :item="child"
-            :base-path="resolvePath(child.path)"
+            :base-path="props.basePath"
         />
     </el-sub-menu>
 </template>
@@ -47,14 +47,6 @@ const hasOneChild = (children = [], self) => {
     }else{
         return false;
     }
-}
-const resolvePath = (routePath, routeQuery) => {
-    // console.log(`basePath:${props.basePath}`)
-    if (routeQuery) {
-        let query = JSON.parse(routeQuery);
-        return { path: getNormalPath(props.basePath + '/' + routePath), query: query }
-    }
-    return getNormalPath(props.basePath + '/' + routePath)
 }
 </script>
 

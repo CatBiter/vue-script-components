@@ -1,6 +1,5 @@
 // 返回项目路径
 export function getNormalPath(p) {
-    console.log(p)
     if (p.length === 0 || !p || p == 'undefined') {
         return p
     };
