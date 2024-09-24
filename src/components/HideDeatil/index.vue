@@ -1,14 +1,14 @@
 <template>
     <div class="detailContent" v-show="detailVisible">
         <div class="top">
-            <span class="header1" @click="show">{{ props.title + tableHeight }}</span>
-            <hide-target :name="'新页数据'" />
+            <span class="header1">{{ props.title }}</span>
+            <hide-target :name="props.name" />
         </div>
         <div class="content" ref="tableContentRef">
             <el-table 
                 :data="props.tableData" 
                 style="width: 100%" 
-                :height="tableHeight"
+                :height="tableHeight.toString()"
                 :default-sort="props.tableConfig.defaultSort">
                 <el-table-column 
                     v-for="(item,index) in props.tableConfig.tableDataConfig" 
@@ -27,9 +27,12 @@
 <script setup>
 import HideTarget from '@/components/HideDeatil/HideTarget';
 import useAppStore from '@/store/modules/app'
-import { nextTick, onMounted, onUnmounted } from 'vue';
 const appStore = useAppStore()
 const props = defineProps({
+    name: {
+        type: String,
+        required: true,
+    },
     title: {
         type: String,
         required: true,
@@ -52,20 +55,23 @@ watch(() => appStore.detailShow, (newValue) => {
 
 const tableContentRef = ref(null)
 const tableHeight = ref(0)
+// 监听元素的尺寸变化了，触发重新计算表格的高度
 const resizeObserver = new ResizeObserver(entries => {
-    for(const entry of entries){
-        nextTick(()=>{
-            console.log(entry.target.offsetHeight)
-            tableHeight.value = entry.target.offsetHeight
-        })
-    }
+    const rect = tableContentRef.value.getBoundingClientRect()
+    tableHeight.value = window.innerHeight - rect.y - 22
 })
 
-onMounted(()=>{
-    resizeObserver.observe(tableContentRef.value)
+onMounted(async () => {
+    await nextTick(); // 等待 DOM 更新完成
+    if(tableContentRef.value){
+        resizeObserver.observe(tableContentRef.value)
+    }
 })
-onUnmounted(()=>{
-    resizeObserver.unobserve(tableContentRef.value)
+onBeforeUnmount(() => {
+    if(resizeObserver && tableContentRef.value){
+        resizeObserver.unobserve(tableContentRef.value)
+        resizeObserver.disconnect()
+    }
 })
 </script>
 

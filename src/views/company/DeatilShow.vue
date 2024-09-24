@@ -2,6 +2,7 @@
     <div class="main">
         <div class="test" :style="`height: ${height}px`" @click="add"></div>
         <hide-deatil 
+            :name="'报价详情'"
             :title="detailTitle" 
             :tableData="tableData"
             :tableConfig="tableConfig" 
