@@ -1,127 +1,80 @@
 <template>
     <div>
-        <div class="box">
-            <div class="bar">
-
-            </div>
-            <div class="canvasContent" ref="canvasContentRef">
-                <div class="canvas" ref="canvasRef" @mousedown="startDrag" @mouseup="stopDrag" @mousemove="onDrag">
-                    <div class="start"></div>
-                </div>
-            </div>
-        </div>
+        <e-charts class="chart" :option="option" />
     </div>
 </template>
 
 <script setup name="WorkPlace">
+import { rgbaToHex, hexToRgba } from '@/utils/colorFormat'
 
-const canvasContentRef = ref(null)
-const canvasRef = ref(null)
+const props = defineProps({
+    width: {
+        type: String,
+    },
+    height: {
+        type: String,
+    },
+    color: {
+        type: String,
+    }
+})
 
-const dragStartX = ref(0);
-const dragStartY = ref(0);
-const isDragging = ref(false);
-const isSpacePressed = ref(false);
-
-const handleKeyDown = (e) => {
-    if (e.key === ' ') {
-        isSpacePressed.value = true;
-        if(!isDragging.value){
-            canvasContentRef.value.style.cursor = 'grab';
+const option = {
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        axisLabel: {
+            show: false // 隐藏坐标刻度
+        },
+        axisTick: {
+            show: false // 隐藏坐标刻度线
+        },
+        axisLine: {
+            show: false // 隐藏坐标轴线
         }
-    }
-}
-const handleKeyUp = (e) => {
-    isSpacePressed.value = false;
-    canvasContentRef.value.style.cursor = 'default';
-    // console.log("取消按下")
-}
-
-
-onMounted(() => {
-    document.addEventListener('keydown', handleKeyDown)
-    document.addEventListener('keyup', handleKeyUp)
-})
-
-const startDrag = (e) => {
-    if (!isSpacePressed.value) return; // 如果空格键没有按下，则不开始拖拽
-
-    dragStartX.value = e.clientX;
-    dragStartY.value = e.clientY;
-    isDragging.value = true;
-    // console.log("开始拖拽")
-}
-const stopDrag = (e) => {
-    isDragging.value = false;
-    // console.log("结束拖拽")
-}
-const onDrag = (e) => {
-    if (!isDragging.value || !isSpacePressed.value) return;
-
-    // 阻止默认事件，避免文本选择等  
-    e.preventDefault();
-
-    const rect = e.target.getBoundingClientRect();
-    console.log(rect)
-    if(e.target === canvasRef.value){
-        // console.log(e.clientX, dragStartX.value)
-        e.target.style.left = `${e.clientX - dragStartX.value}px`;
-        e.target.style.top = `${e.clientY - dragStartY.value}px`;
-
-        const maxLeft = rect.width - e.target.offsetWidth;
-        const maxTop = rect.height - e.target.offsetHeight;
-        e.target.style.left = `${Math.min(e.clientX - dragStartX.value, maxLeft)}px`;
-        e.target.style.top = `${Math.min(e.clientY - dragStartY.value, maxTop)}px`;
-    }else{
-        canvasRef.value.style.left = `${e.clientX - dragStartX.value}px`;
-        canvasRef.value.style.top = `${e.clientY - dragStartY.value}px`;
-
-        const maxLeft = rect.width - e.target.offsetWidth;
-        const maxTop = rect.height - e.target.offsetHeight;
-    }
-
-    canvasContentRef.value.style.cursor = 'grabbing';
+    },
+    yAxis: {
+        type: 'value',
+        axisLine: {
+            show: false // 隐藏 Y 轴
+        },
+        axisLabel: {
+            show: false // 隐藏 Y 轴刻度
+        },
+        axisTick: {
+            show: false // 隐藏 Y 轴刻度线
+        },
+        splitLine: {
+            show: false // 隐藏网格线
+        }
+    },
+    series: [
+        {
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            type: 'line',
+            smooth: true,  // 设置平滑
+            // 设置点的颜色
+            itemStyle: {
+                color: '#9978F7'
+            },
+            // 设置线条的颜色
+            lineStyle: {
+                color: '#9978F7',
+                width: 2
+            },
+            // 设置区域的背景颜色
+            areaStyle: {
+                color: 'rgba(153, 120, 247, 0.4)'
+            }
+        }
+    ]
 }
 
-onUnmounted(() => {
-    document.removeEventListener('keydown', handleKeyDown)
-    document.removeEventListener('keyup', handleKeyUp)
-})
 </script>
 
-<style scoped lang="scss">
-.box {
-    height: 100%;
-    background-color: #ffffff;
-
-    .bar {
-        height: 46px;
-        border-bottom: 1px solid #e9e9e9;
-    }
-
-    .canvasContent {
-        width: 100%;
-        height: calc(100% - 47px);
-        overflow: hidden;
-        position: relative;
-
-        .canvas {
-            width: 2000px;
-            height: 1000px;
-            position: absolute;
-
-            .start {
-                position: absolute;
-                top: 100px;
-                left: 100px;
-                width: 100px;
-                height: 100px;
-                border-radius: 50px;
-                background-color: orange;
-            }
-
-        }
-
-    }
+<style lang="scss" scoped>
+.chart {
+    height: 400px;
 }
 </style>

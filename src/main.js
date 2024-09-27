@@ -13,6 +13,10 @@ import SvgIcon from '@/components/SvgIcon'
 import 'virtual:svg-icons-register'
 import elementIcons from '@/utils/svgicon'
 
+// 引入echarts
+import Echarts from 'vue-echarts'
+import * as echarts from 'echarts'
+
 const app = createApp(App)
 
 // 使用element-plus 并且设置全局的大小
@@ -21,4 +25,7 @@ app.use(store)
 app.use(router)
 app.use(elementIcons)
 app.component('svg-icon', SvgIcon)
+app.component('e-charts', Echarts)
+// 全局挂载echarts
+app.config.globalProperties.$echarts = echarts
 app.mount('#app')
