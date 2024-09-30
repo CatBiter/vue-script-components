@@ -1,80 +1,87 @@
 <template>
     <div>
-        <e-charts class="chart" :option="option" />
+        <div class="bottom">
+            <div class="title">财务数据</div>
+            <div class="banner">
+                <div class="previous"><</div>
+                <div class="data_list">
+                    <div class="statistical_card">
+
+                    </div>
+                    <div class="statistical_card"></div>
+                    <div class="statistical_card"></div>
+                    <div class="statistical_card"></div>
+                </div>
+                <div class="next">></div>
+            </div>
+            <!-- <e-charts :xData="xData" :yData="yData" :color="'#9978F7'"/> -->
+        </div>
     </div>
 </template>
 
 <script setup name="WorkPlace">
-import { rgbaToHex, hexToRgba } from '@/utils/colorFormat'
+import ECharts from '@/components/ECharts.vue';
 
-const props = defineProps({
-    width: {
-        type: String,
-    },
-    height: {
-        type: String,
-    },
-    color: {
-        type: String,
-    }
-})
-
-const option = {
-    xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-        axisLabel: {
-            show: false // 隐藏坐标刻度
-        },
-        axisTick: {
-            show: false // 隐藏坐标刻度线
-        },
-        axisLine: {
-            show: false // 隐藏坐标轴线
-        }
-    },
-    yAxis: {
-        type: 'value',
-        axisLine: {
-            show: false // 隐藏 Y 轴
-        },
-        axisLabel: {
-            show: false // 隐藏 Y 轴刻度
-        },
-        axisTick: {
-            show: false // 隐藏 Y 轴刻度线
-        },
-        splitLine: {
-            show: false // 隐藏网格线
-        }
-    },
-    series: [
-        {
-            data: [820, 932, 901, 934, 1290, 1330, 1320],
-            type: 'line',
-            smooth: true,  // 设置平滑
-            // 设置点的颜色
-            itemStyle: {
-                color: '#9978F7'
-            },
-            // 设置线条的颜色
-            lineStyle: {
-                color: '#9978F7',
-                width: 2
-            },
-            // 设置区域的背景颜色
-            areaStyle: {
-                color: 'rgba(153, 120, 247, 0.4)'
-            }
-        }
-    ]
-}
-
+const xData = ref(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'])
+const yData = ref([820, 932, 901, 934, 1290, 1330, 1320])
 </script>
 
 <style lang="scss" scoped>
-.chart {
-    height: 400px;
+.bottom{
+    border-radius: 10px;
+    padding: 10px 12px;
+    height: 196px;
+    background-color: #ffffff;
+    
+    .title{
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .banner{
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        .previous{
+            width: 24px;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
+            position: absolute;
+            left: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .data_list{
+            width: 100%;
+            height: 158px;
+            display: flex;
+            justify-content: space-between;
+
+            .statistical_card{
+                width: 320px;
+                background-color: #ffffff;
+                padding: 16px;
+                border-radius: 8px;
+                box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+                box-sizing: border-box;
+            }
+        }
+
+        .next {
+            width: 24px;
+            height: 100%;
+            
+            position: absolute;
+            right: 0;
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    
+    
 }
 </style>
