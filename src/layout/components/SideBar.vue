@@ -39,7 +39,7 @@ const handleSelect = (path) => {
 
 .sideBar {
     min-width: 50px;
-    width:60px;
+    width: 200px;
     height: calc(100vh - 24px);
     border-radius: 0 8px 8px 0;
 
