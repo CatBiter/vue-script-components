@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vue-office/excel": "^1.7.11",
     "echarts": "^5.5.1",
     "element-plus": "^2.8.0",
     "moment": "^2.30.1",

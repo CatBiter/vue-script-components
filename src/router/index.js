@@ -29,6 +29,11 @@ export const constRoutes  = [
         component: () => import('@/views/company/DeatilShow'),
         name: 'DeatilShow',
         meta: { title: '详情显示', icon: ''}
+      },{
+        path: 'preview',
+        component: () => import('@/views/company/Preview'),
+        name: 'Preview',
+        meta: { title: '文件/图片预览', icon: ''}
       }
     ]
   }

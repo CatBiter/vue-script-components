@@ -6,10 +6,15 @@ const useAppStore = defineStore(
             status: true,
             label: '',
         },
+        // 蒙层显示
+        maskShow: false,
     }),
     actions: {
         changeHideDetail(detailShow) {
-            this.detailShow = detailShow
+            this.detailShow = detailShow;
+        },
+        changeMaskShow(flag){
+            this.maskShow = flag;
         },
     },
 }

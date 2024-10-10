@@ -3,7 +3,9 @@
         <SideBar />
         <div class="main">
             <div class="top" :style="{ backgroundColor: variables.sideBarBackground }"></div>
-            <router-view class="app-main"></router-view>
+            <div class="app-main">
+                <router-view></router-view>
+            </div>
         </div>
     </div>
 </template>
@@ -19,7 +21,6 @@ import SideBar from './components/SideBar.vue';
 
     .main{
         flex: 1;
-        min-width: 1372px;
         overflow: hidden;
         .top{
             height: 56px;
@@ -28,9 +29,8 @@ import SideBar from './components/SideBar.vue';
             border-radius: 8px;
         }
         .app-main{
-            padding: 0 12px;
             position: relative;
-            margin-top: 12px;
+            margin: 12px;
             height: calc(100vh - 92px);
             overflow: auto;
         }
