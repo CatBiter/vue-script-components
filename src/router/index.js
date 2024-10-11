@@ -36,6 +36,28 @@ export const constRoutes  = [
         meta: { title: '文件/图片预览', icon: ''}
       }
     ]
+  },{
+    path: '/test',
+    component: Layout,
+    meta: { title: '测试', icon: ''},
+    children: [
+      {
+        path: 'test1',
+        component: () => import('@/views/company/RightClickMenus'),
+        name: 'test1',
+        meta: { title: '测试1', icon: ''}
+      },{
+        path: 'test2',
+        component: () => import('@/views/company/DeatilShow'),
+        name: 'test2',
+        meta: { title: '测试2', icon: ''}
+      },{
+        path: 'test3',
+        component: () => import('@/views/company/Preview'),
+        name: 'test3',
+        meta: { title: '测试3', icon: ''}
+      }
+    ]
   }
 ]
 

@@ -4,9 +4,13 @@
             <!-- logo和项目名称 -->
         </div>
         <el-menu 
-            :default-active="activeIndex.toString()" :collapse="isCollapse" :background-color="variables.sideBarBackground"
+            class="custom-menu"
+            :default-active="activeIndex.toString()" 
+            :collapse="isCollapse" 
+            :background-color="variables.sideBarBackground"
             :text-color="variables.sideBarColor" :unique-opened="true"
-            :active-text-color="variables.sideBarColorActive" :collapse-transition="true" mode="vertical"
+            :active-text-color="variables.sideBarColorActive" 
+            :collapse-transition="true" mode="vertical"
             @select="handleSelect">
             <side-bar-item 
                 v-for="(route, index) in constRoutes"

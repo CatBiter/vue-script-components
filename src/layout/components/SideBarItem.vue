@@ -49,5 +49,3 @@ const hasOneChild = (children = [], self) => {
     }
 }
 </script>
-
-<style lang="scss" scoped></style>
