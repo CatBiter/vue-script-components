@@ -2,7 +2,9 @@
     <div class="app">
         <SideBar />
         <div class="main">
-            <div class="top" :style="{ backgroundColor: variables.sideBarBackground }"></div>
+            <div class="top" :style="{ backgroundColor: variables.sideBarBackground }">
+                <LayoutTop />
+            </div>
             <div class="app-main">
                 <router-view></router-view>
             </div>
@@ -13,6 +15,7 @@
 <script setup>
 import variables from '@/assets/styles/variables.module.scss'
 import SideBar from './components/SideBar.vue';
+import LayoutTop from './components/LayoutTop.vue'
 </script>
 
 <style lang="scss" scoped>
@@ -30,6 +33,8 @@ import SideBar from './components/SideBar.vue';
             margin: 0 12px;
             padding: 0 12px;
             border-radius: 8px;
+            display: flex;
+            align-items: center;
         }
 
         .app-main {

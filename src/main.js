@@ -9,8 +9,8 @@ import store from './store'
 import router from './router'
 
 // svg全局注册
+import "virtual:svg-icons-register"
 import SvgIcon from '@/components/SvgIcon'
-import 'virtual:svg-icons-register'
 import elementIcons from '@/utils/svgicon'
 
 // 引入echarts
