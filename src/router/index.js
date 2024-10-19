@@ -6,18 +6,19 @@ export const constRoutes  = [
     path: '',
     component: Layout,
     redirect: '/workplace',
+    meta: { title: '工作台', icon: 'workplace'},
     children: [
       {
         path: 'workplace',
         component: () => import('@/views/WorkPlace'),
         name: 'WorkPlace',
-        meta: { title: '工作台', icon: ''}
+        meta: { title: '工作台', icon: 'workplace'}
       }
     ]
   },{
     path: '/company',
     component: Layout,
-    meta: { title: '公司', icon: ''},
+    meta: { title: '公司', icon: 'company'},
     children: [
       {
         path: 'rightClickMenus',
@@ -34,28 +35,6 @@ export const constRoutes  = [
         component: () => import('@/views/company/Preview'),
         name: 'Preview',
         meta: { title: '文件/图片预览', icon: ''}
-      }
-    ]
-  },{
-    path: '/test',
-    component: Layout,
-    meta: { title: '测试', icon: ''},
-    children: [
-      {
-        path: 'test1',
-        component: () => import('@/views/company/RightClickMenus'),
-        name: 'test1',
-        meta: { title: '测试1', icon: ''}
-      },{
-        path: 'test2',
-        component: () => import('@/views/company/DeatilShow'),
-        name: 'test2',
-        meta: { title: '测试2', icon: ''}
-      },{
-        path: 'test3',
-        component: () => import('@/views/company/Preview'),
-        name: 'test3',
-        meta: { title: '测试3', icon: ''}
       }
     ]
   }

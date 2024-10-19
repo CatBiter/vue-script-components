@@ -1,12 +1,16 @@
 <template>
     <template v-if="hasOneChild(item.children, item)">
         <el-menu-item :index="props.basePath + '/' + onlyOneChild.path">
-            <template #title>{{ onlyOneChild.meta.title }}</template>
+            <template #title>
+                <svg-icon class="navIcon" :icon-class="onlyOneChild.meta.icon"/>
+                {{ onlyOneChild.meta.title }}
+            </template>
         </el-menu-item>
     </template>
 
     <el-sub-menu v-else :index="item.path" teleported>
         <template v-if="item.meta" #title>
+            <svg-icon class="navIcon" :icon-class="item.meta.icon"/>
             <span class="menu-title">{{ item.meta.title }}</span>
         </template>
 
@@ -49,3 +53,10 @@ const hasOneChild = (children = [], self) => {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+.navIcon{
+    margin-right: 10px;
+    font-size: 18px;
+}
+</style>
