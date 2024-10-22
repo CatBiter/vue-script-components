@@ -17,6 +17,10 @@ import elementIcons from '@/utils/svgicon'
 import Echarts from 'vue-echarts'
 import * as echarts from 'echarts'
 
+
+import 'vuetify/styles'
+import { createVuetify } from 'vuetify'
+
 const app = createApp(App)
 
 // 使用element-plus 并且设置全局的大小
@@ -24,6 +28,7 @@ app.use(ElementPlus)
 app.use(store)
 app.use(router)
 app.use(elementIcons)
+app.use(createVuetify())
 app.component('svg-icon', SvgIcon)
 app.component('e-charts', Echarts)
 // 全局挂载echarts
