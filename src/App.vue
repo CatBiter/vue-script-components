@@ -9,17 +9,11 @@
     <div class="detailShowFixed" v-show="!status" @click="changeDetailVisible">
         {{ label }}
     </div>
-    <!-- 全局预览蒙层 -->
-     <Mask>
-        <img :src="Logo">
-     </Mask>
 </template>
 
 <script setup>
 import variables from '@/assets/styles/variables.module.scss'
-import Mask from '@/components/Mask'
 import useAppStore from '@/store/modules/app'
-import Logo from '@/assets/aaa.png'
 const appStore = useAppStore()
 const status = ref(true)
 const label = ref("")
@@ -40,7 +34,7 @@ const changeDetailVisible = () => {
 <style lang="scss" scoped>
 .bg {
     width: 100vw;
-    height: calc(100vh - 24px);
+    height: 100vh;
     padding: 12px 0;
 }
 

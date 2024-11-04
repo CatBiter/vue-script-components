@@ -41,7 +41,7 @@ import LayoutTop from './components/LayoutTop.vue'
             position: relative;
             margin: 12px;
             height: calc(100vh - 92px);
-            overflow: auto;
+            overflow-x: auto;
         }
     }
 }
