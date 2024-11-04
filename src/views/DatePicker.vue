@@ -2,6 +2,7 @@
     <div class="date-picker" ref="datePicker" >
         <input class="picker-input" ref="dateInputRef"
             type="text" placeholder="选择日期" @focus="handleInputFocus" />
+        
         <div v-show="showPopup" class="popup" ref="popupRef">
             
         </div>
@@ -41,6 +42,7 @@ onBeforeUnmount(() => {
 .date-picker {
     position: relative;
     display: inline-block;
+    float: right;
 }
 
 input {
@@ -57,7 +59,7 @@ input {
     border-radius: 4px;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.12);
     z-index: 100;
-    left: 0;
     margin-top: 10px;
+    left: 0;
 }
 </style>

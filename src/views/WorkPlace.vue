@@ -8,6 +8,13 @@
         </template>
     </v-date-picker> -->
     <date-picker />
+    <!-- <el-date-picker
+      v-model="value2"
+      type="datetimerange"
+      start-placeholder="Start Date"
+      end-placeholder="End Date"
+      :default-time="defaultTime2"
+    /> -->
 </template>
 
 <script setup name="WorkPlace">
