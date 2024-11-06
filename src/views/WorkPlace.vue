@@ -6,15 +6,13 @@
         <template #header>
             1111
         </template>
-    </v-date-picker> -->
-    <date-picker />
-    <!-- <el-date-picker
-      v-model="value2"
-      type="datetimerange"
-      start-placeholder="Start Date"
-      end-placeholder="End Date"
-      :default-time="defaultTime2"
-    /> -->
+</v-date-picker> -->
+    <div style="height: 1000px;">
+        <date-picker />
+        <!-- <el-date-picker style="top: 500px;" v-model="value2" type="datetimerange" start-placeholder="Start Date" end-placeholder="End Date"
+            :default-time="defaultTime2" /> -->
+    </div>
+
 </template>
 
 <script setup name="WorkPlace">
@@ -23,6 +21,4 @@ import DatePicker from './DatePicker.vue';
 
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
