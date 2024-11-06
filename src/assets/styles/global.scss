@@ -1,3 +1,12 @@
 .h1{
     font-size: 20px;
 }
+
+.ob-popper {
+    position: absolute;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.12);
+    z-index: 1000;
+    padding: 12px;
+}
